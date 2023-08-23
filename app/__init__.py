@@ -5,9 +5,11 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Flask extensions
+    # Flask extensions:
+    from app.extensions import db
+    db.init_app(app)
 
-    # Blueprints
+    # Blueprints:
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
